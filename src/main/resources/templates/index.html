@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!-- Hacemos referencia a la dependencia de Thymeleaf -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Lista con SpringBoot</title>
+<!-- CDN de BootStrap para poder usarlo -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+	crossorigin="anonymous">
+</head>
+<body>
+	<!-- Contenedor que contiene la tabla -->
+	<div class="container mt-4">
+	<!-- Boton para añadir -->
+	<a th:href="@{/new}" class="btn btn-primary">Nuevo</a>
+		<!-- Tabla -->
+		<table class="table table-hover">
+			<!-- Encabezado de la tabla -->
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>NOMBRE</th>
+					<th>TELEFONO</th>
+					<th>ACCIONES</th>
+				</tr>
+			</thead>
+			<!-- Cuerpo de la tabla -->
+			<tbody>
+				<!-- Recogemos los atributos de la clase Persona -->
+				<tr th:each="persona:${personas}">
+					<td th:text="${persona.id}"></td>
+					<td th:text="${persona.name}"></td>
+					<td th:text="${persona.telefono}"></td>
+					<!-- Botones -->
+					<td><a class="btn btn-warning">Editar</a> <a
+						class="btn btn-danger">Eliminar</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

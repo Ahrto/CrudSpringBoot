@@ -4,11 +4,14 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.alberto.interfaceService.IpersonaService;
 import com.alberto.interfaces.IPersona;
 import com.alberto.modelo.Persona;
 
+// Anotacion que indica que es un servicio
+@Service
 public class PersonaService implements IpersonaService{
 	
 //	Variable de la interfaz IPersona
@@ -17,8 +20,8 @@ public class PersonaService implements IpersonaService{
 
 	@Override
 	public List<Persona> listar() {
-		// TODO Auto-generated method stub
-		return null;
+//		Metodo para listar (FindAll)
+		return (List<Persona>) data.findAll();
 	}
 
 	@Override
@@ -29,8 +32,12 @@ public class PersonaService implements IpersonaService{
 
 	@Override
 	public int save(Persona p) {
-		// TODO Auto-generated method stub
-		return 0;
+		int res = 0;
+		Persona persona = data.save(p);
+		if (!persona.equals(null)) {
+			res = 1;
+		}
+		return res;
 	}
 
 	@Override
