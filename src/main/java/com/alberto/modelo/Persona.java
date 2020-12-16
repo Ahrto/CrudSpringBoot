@@ -6,19 +6,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
 // Anotacion SpringBoot (estereoptipos)
 @Entity
 @Table(name = "persona")
 public class Persona {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
-	
 	private String name;
-	
 	private String telefono;
 
 	public Persona() {
